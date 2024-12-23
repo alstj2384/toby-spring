@@ -1,13 +1,16 @@
 package toby.toby_spring.user;
 
+import toby.toby_spring.user.dao.DConnectionMaker;
+import toby.toby_spring.user.dao.SimpleConnectionMaker;
 import toby.toby_spring.user.dao.UserDao;
 import toby.toby_spring.user.domain.User;
 
 import java.sql.SQLException;
 
-public class Main {
+public class UserDaoTest {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
+        SimpleConnectionMaker scm = new SimpleConnectionMaker();
+        UserDao userDao = new UserDao(scm);
 
         User user = new User();
         user.setId("whiteship");
